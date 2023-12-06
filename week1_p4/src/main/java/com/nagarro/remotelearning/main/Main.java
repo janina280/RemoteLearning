@@ -5,8 +5,6 @@ import com.nagarro.remotelearning.tools.ConnectionsManager;
 public class Main {
     public static void main(String[] args) {
         ConnectionsManager connectionsManager = new ConnectionsManager();
-        System.out.println(connectionsManager.getConnection(2));
-        System.out.println(connectionsManager.getConnection(21));
-
+        System.out.println(connectionsManager.getConnection());
     }
 }

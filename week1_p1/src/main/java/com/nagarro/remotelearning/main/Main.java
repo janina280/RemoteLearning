@@ -12,18 +12,14 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-
-        //creating the 'ReadFromFile' object
         ReadFromFile readFromFile = new ReadFromFile();
 
         String fileName = "W1P1input.txt";
 
-        //uniqueness of the individuals in the collection
         Set<Person> persons = new HashSet<>();
 
         InputStream is = readFromFile.getFileFromResourceAsStream(fileName);
 
-        //read line by line from the input stream
         try (InputStreamReader streamReader =
                      new InputStreamReader(is, StandardCharsets.UTF_8);
              BufferedReader reader = new BufferedReader(streamReader)) {
@@ -42,7 +38,5 @@ public class Main {
         for (Person p : persons) {
             System.out.println(p.toString());
         }
-
     }
-
 }

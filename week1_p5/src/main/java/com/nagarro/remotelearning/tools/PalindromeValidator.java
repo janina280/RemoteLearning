@@ -1,5 +1,7 @@
 package com.nagarro.remotelearning.tools;
 
+import com.nagarro.remotelearning.interfaces.Validator;
+
 public class PalindromeValidator implements Validator {
     @Override
     public boolean isValid(long number) {

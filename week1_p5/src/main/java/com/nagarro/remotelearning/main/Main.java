@@ -1,17 +1,15 @@
 package com.nagarro.remotelearning.main;
 
-
-import com.nagarro.remotelearning.tools.Interval;
+import com.nagarro.remotelearning.tools.PalindromeFinder;
 import com.nagarro.remotelearning.tools.PalindromeValidator;
-import com.nagarro.remotelearning.tools.Validator;
+import com.nagarro.remotelearning.interfaces.Validator;
 
 public class Main {
-    static Interval browser = new Interval();
+    static PalindromeFinder browser = new PalindromeFinder();
     static Validator validator = new PalindromeValidator();
 
     public static void main(String[] args) {
-        browser.browseOn(100000, 109, validator);
-       // browser.browseOn(Long.MAX_VALUE/2,10000019,validator);
+        browser.findPalindromes(10000019, 109, validator);
         System.out.println(browser.getResults());
     }
 }
