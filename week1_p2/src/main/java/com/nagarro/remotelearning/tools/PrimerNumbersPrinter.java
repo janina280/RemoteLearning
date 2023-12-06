@@ -1,4 +1,4 @@
-package com.nagarro.remotelearning.week1_p2.tools;
+package com.nagarro.remotelearning.tools;
 
 public class PrimerNumbersPrinter {
 

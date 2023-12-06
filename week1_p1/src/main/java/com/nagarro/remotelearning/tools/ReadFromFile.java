@@ -1,4 +1,4 @@
-package com.nagarro.remotelearning.week1_p1.tools;
+package com.nagarro.remotelearning.tools;
 
 import java.io.*;
 

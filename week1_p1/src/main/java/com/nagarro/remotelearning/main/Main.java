@@ -1,7 +1,7 @@
-package com.nagarro.remotelearning.week1_p1.main;
+package com.nagarro.remotelearning.main;
 
-import com.nagarro.remotelearning.week1_p1.model.Person;
-import com.nagarro.remotelearning.week1_p1.tools.ReadFromFile;
+import com.nagarro.remotelearning.model.Person;
+import com.nagarro.remotelearning.tools.ReadFromFile;
 
 import java.io.BufferedReader;
 import java.io.IOException;

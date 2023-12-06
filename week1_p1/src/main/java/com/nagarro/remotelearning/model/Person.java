@@ -1,4 +1,4 @@
-package com.nagarro.remotelearning.week1_p1.model;
+package com.nagarro.remotelearning.model;
 
 public class Person {
     private final String firstName;

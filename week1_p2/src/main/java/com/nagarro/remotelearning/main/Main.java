@@ -1,6 +1,6 @@
-package com.nagarro.remotelearning.week1_p2.main;
+package com.nagarro.remotelearning.main;
 
-import com.nagarro.remotelearning.week1_p2.tools.PrimerNumbersPrinter;
+import com.nagarro.remotelearning.tools.PrimerNumbersPrinter;
 
 public class Main {
 
