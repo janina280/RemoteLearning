@@ -1,9 +1,6 @@
-package com.nagarro.remotelearning.tools;
+package com.nagarro.remotelearning.util;
 
-import com.nagarro.remotelearning.interfaces.Validator;
-
-public class PalindromeValidator implements Validator {
-    @Override
+public class PalindromeManager {
     public boolean isValid(long number) {
         long reverse;
         long sum = 0;

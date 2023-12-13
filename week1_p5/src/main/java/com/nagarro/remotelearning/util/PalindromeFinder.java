@@ -1,13 +1,11 @@
-package com.nagarro.remotelearning.tools;
-
-import com.nagarro.remotelearning.interfaces.Validator;
+package com.nagarro.remotelearning.util;
 
 public class PalindromeFinder {
     private long totalResults = 0;
 
-    public void findPalindromes(long maxValue, long step, Validator validator) {
+    public void findPalindromes(long maxValue, long step, PalindromeManager manager) {
         for (long i = step; i <= maxValue; i += step)
-            if (validator.isValid(i)) {
+            if (manager.isValid(i)) {
                 totalResults++;
             }
     }

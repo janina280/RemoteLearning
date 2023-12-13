@@ -1,15 +1,14 @@
 package com.nagarro.remotelearning.main;
 
-import com.nagarro.remotelearning.tools.PalindromeFinder;
-import com.nagarro.remotelearning.tools.PalindromeValidator;
-import com.nagarro.remotelearning.interfaces.Validator;
+import com.nagarro.remotelearning.util.PalindromeFinder;
+import com.nagarro.remotelearning.util.PalindromeManager;
 
 public class Main {
-    static PalindromeFinder browser = new PalindromeFinder();
-    static Validator validator = new PalindromeValidator();
-
     public static void main(String[] args) {
-        browser.findPalindromes(10000019, 109, validator);
-        System.out.println(browser.getResults());
+        PalindromeFinder palindromeFinder = new PalindromeFinder();
+        PalindromeManager palindromeManager = new PalindromeManager();
+
+        palindromeFinder.findPalindromes(10000019, 109, palindromeManager);
+        System.out.println(palindromeFinder.getResults());
     }
 }
