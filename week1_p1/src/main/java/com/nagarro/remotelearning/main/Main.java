@@ -1,42 +1,20 @@
 package com.nagarro.remotelearning.main;
 
 import com.nagarro.remotelearning.model.Person;
-import com.nagarro.remotelearning.tools.ReadFromFile;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.*;
+import com.nagarro.remotelearning.util.PersonManager;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        ReadFromFile readFromFile = new ReadFromFile();
+    public static void main(String[] args) {
+        final String FILE_NAME = "W1P1input.txt";
 
-        String fileName = "W1P1input.txt";
+        PersonManager personManager = new PersonManager();
 
-        Set<Person> persons = new HashSet<>();
+        personManager.processPerson(FILE_NAME);
 
-        InputStream is = readFromFile.getFileFromResourceAsStream(fileName);
+        var persons = personManager.GetPersons();
 
-        try (InputStreamReader streamReader =
-                     new InputStreamReader(is, StandardCharsets.UTF_8);
-             BufferedReader reader = new BufferedReader(streamReader)) {
-
-            String string;
-            while ((string = reader.readLine()) != null) {
-                Person newPerson = new Person(string);
-                persons.add(newPerson);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        //Displaying information about people on the console
-        for (Person p : persons) {
-            System.out.println(p.toString());
+        for (Person person : persons) {
+            System.out.println(person);
         }
     }
 }
