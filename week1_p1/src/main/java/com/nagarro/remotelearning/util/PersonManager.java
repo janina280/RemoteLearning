@@ -8,6 +8,9 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static com.nagarro.remotelearning.util.Helper.distinctByKey;
 
 public class PersonManager {
     private List<Person> _persons = new ArrayList<>();
@@ -23,6 +26,10 @@ public class PersonManager {
                 var newPerson = getPerson(personInfo);
                 _persons.add(newPerson);
             }
+
+            _persons = _persons.stream()
+                    .filter(distinctByKey(Person::toString))
+                    .collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
         }
