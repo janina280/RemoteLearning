@@ -1,4 +1,4 @@
-package com.nagarro.remotelearning;
+package com.nagarro.remotelearning.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +14,6 @@ public class Person {
         this.surname = surname;
         assignFirstNames(splitName(firstname));
     }
-
     public Person(String fullname) {
         List<String> splittedNames = splitName(fullname);
         this.surname = splittedNames.get(SURNAME_INDEX);

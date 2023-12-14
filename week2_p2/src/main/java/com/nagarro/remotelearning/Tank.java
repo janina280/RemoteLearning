@@ -2,6 +2,7 @@ package com.nagarro.remotelearning;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.Object;
 
 public class Tank {
     private final List<Object> stack = new ArrayList<>();
@@ -18,6 +19,7 @@ public class Tank {
         }
     }
 
+    //@SuppressWarnings("removal")
     @Override
     protected void finalize() throws Throwable {
         if (stack.isEmpty()) {
@@ -26,6 +28,6 @@ public class Tank {
             System.out.println("Stack is in use");
             return;
         }
-        super.finalize();
+     super.finalize();
     }
 }
