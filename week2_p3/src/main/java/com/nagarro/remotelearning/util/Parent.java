@@ -1,4 +1,4 @@
-package com.nagarro.remotelearning;
+package com.nagarro.remotelearning.util;
 
 public class Parent {
     private static final int i = initializeInt(1);

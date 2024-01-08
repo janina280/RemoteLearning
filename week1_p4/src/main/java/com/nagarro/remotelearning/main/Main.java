@@ -1,10 +1,15 @@
 package com.nagarro.remotelearning.main;
 
-import com.nagarro.remotelearning.util.ConnectionsManager;
-
+import com.nagarro.remotelearning.util.ConnectionManager;
 public class Main {
+    public static final int MAX_CONNECTION = 5;
+
     public static void main(String[] args) {
-        ConnectionsManager connectionsManager = new ConnectionsManager();
-        System.out.println(connectionsManager.getConnection());
+        ConnectionManager client = ConnectionManager.getInstance(MAX_CONNECTION);
+
+        for (int i = 0; i < 10; i++) {
+            ConnectionManager.Connection connection = client.getConnection();
+            System.out.println(connection);
+        }
     }
 }

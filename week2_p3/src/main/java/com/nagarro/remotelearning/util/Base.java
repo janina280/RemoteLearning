@@ -1,4 +1,4 @@
-package com.nagarro.remotelearning;
+package com.nagarro.remotelearning.util;
 
 public class Base {
     private final Child classChild = new Child();

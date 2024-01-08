@@ -1,42 +1,61 @@
 package com.nagarro.remotelearning.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Person {
-    private static final int SURNAME_INDEX = 0;
-    private int startIndex = 0;
-    private final String surname;
-    private final List<String> firstname = new ArrayList<>();
+    private String firstname;
+    private String surname;
 
-    public Person(String surname, String firstname) {
-        this.surname = surname;
-        assignFirstNames(splitName(firstname));
-    }
-    public Person(String fullname) {
-        List<String> splittedNames = splitName(fullname);
-        this.surname = splittedNames.get(SURNAME_INDEX);
-        startIndex += 1;
-        assignFirstNames(splittedNames);
-    }
+    public Person(String firstname, String surname) throws Exception {
+        if (nameIsValid(firstname)) {
+            this.firstname = firstname;
+        }
+        else {
+            throw new Exception("Invalid firstname");
+        }
 
-    private List<String> splitName(String fullname) {
-        List<String> splittedString = Arrays.asList(fullname.split(" "));
-        return splittedString;
-    }
-
-    private void assignFirstNames(List<String> fullnameSplitted) {
-        for (int i = startIndex; i < fullnameSplitted.size(); i++) {
-            firstname.add(fullnameSplitted.get(i));
+        if (!nameIsValid(surname) || surname.contains(" ")) {
+            throw new Exception("Invalid surname");
+        }
+        else {
+            this.surname = surname;
         }
     }
+    public Person(String fullName) throws Exception {
+        if (nameIsValid(fullName)) {
+            this.firstname = "";
+            String[] wordsInFullName = fullName.split("\\s+");
+            for (int i = 0; i < wordsInFullName.length - 1; i++) {
+                this.firstname = this.firstname.concat(wordsInFullName[i]);
+                this.firstname = this.firstname.concat(" ");
+            }
+            this.surname = wordsInFullName[wordsInFullName.length - 1];
+        }
+        else {
+            throw new Exception("Invalid fullname");
+        }
+    }
+    public String getFirstname() {
+        return this.firstname;
+    }
+    public void setFirstname (String firstname) {
+        this.firstname = firstname;
+    }
+    public String getSurname() {
+        return this.surname;
+    }
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "surname='" + surname + '\'' +
-                ", firstname='" + firstname + '\'' +
-                '}';
+    public boolean nameIsValid(String name) {
+        if (name.charAt(0) == ' ' || name.charAt(0) == '-' || name.charAt(name.length() - 1) == ' '
+                || name.charAt(name.length() - 1) == '-' || name.contains("  ")) {
+            return false;
+        }
+        Pattern stringPattern = Pattern.compile("[^a-zA-Z\\- ]");
+        Matcher matcher = stringPattern.matcher(name);
+        return !matcher.find();
     }
 }

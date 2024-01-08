@@ -1,4 +1,4 @@
-package com.nagarro.remotelearning;
+package com.nagarro.remotelearning.util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class Tank {
         }
     }
 
-    //@SuppressWarnings("removal")
+    @SuppressWarnings("removal")
     @Override
     protected void finalize() throws Throwable {
         if (stack.isEmpty()) {

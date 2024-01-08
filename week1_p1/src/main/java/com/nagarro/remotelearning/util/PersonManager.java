@@ -1,66 +1,52 @@
 package com.nagarro.remotelearning.util;
-
 import com.nagarro.remotelearning.model.Person;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static com.nagarro.remotelearning.util.Helper.distinctByKey;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class PersonManager {
-    private List<Person> _persons = new ArrayList<>();
-    public void processPerson(String fileNameInput) {
-        ReadFromFile readFromFile = new ReadFromFile();
-        InputStream is = readFromFile.getFileFromResourceAsStream(fileNameInput);
+        public static final int FIRST_NAME_POSITION = 0;
+        public static final int LAST_NAME_POSITION = 1;
+        public static final int YEAR_BIRTHDAY_POSITION = 2;
+        public static final int YEAR_DEAD_POSITION = 3;
+        public static final int MAX_POSITION = 4;
 
-        try (InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
-             BufferedReader reader = new BufferedReader(streamReader)) {
-            String personInfo;
+        public Set<Person> read(String fileName) {
+            Set<Person> personages = new LinkedHashSet<Person>();
+            String cvsSplitBy = ",";
+            try {
+                ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+                InputStream inputStream = classloader.getResourceAsStream(fileName);
+                BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] data;
+                    data = line.split(cvsSplitBy);
+                    Person person = new Person();
+                    person.setFirstName(data[FIRST_NAME_POSITION]);
+                    person.setLastName(data[LAST_NAME_POSITION]);
+                    person.setYearBirthday(data[YEAR_BIRTHDAY_POSITION]);
 
-            while ((personInfo = reader.readLine()) != null) {
-                var newPerson = getPerson(personInfo);
-                _persons.add(newPerson);
+                    if (data.length < MAX_POSITION) {
+                        person.setYearDead(" lives");
+
+                    } else {
+                        person.setYearDead(data[YEAR_DEAD_POSITION]);
+
+                    }
+
+                    personages.add(person);
+
+                }
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
-            _persons = _persons.stream()
-                    .filter(distinctByKey(Person::toString))
-                    .collect(Collectors.toList());
-        } catch (IOException e) {
-            e.printStackTrace();
+            return personages;
         }
     }
-    
-    public List<Person> GetPersons(){
-        return _persons;
-    }
-
-    private Person getPerson(String personInfo) {
-        final int FIRST_NAME_INDEX = 0;
-        final int LAST_NAME_INDEX = 1;
-        final int DATE_OF_BIRTH_INDEX = 2;
-        final int DATE_OF_DEATH_INDEX = 3;
-
-        String[] personInfoSplit = personInfo.split(", ");
-
-        var firstName = personInfoSplit[FIRST_NAME_INDEX];
-        var lastName = personInfoSplit[LAST_NAME_INDEX];
-        var dob = personInfoSplit[DATE_OF_BIRTH_INDEX];
-
-        Person person;
-        if (personInfoSplit.length >= 4) {
-            var dod = personInfoSplit[DATE_OF_DEATH_INDEX];
-            person = new Person(firstName, lastName, dob, dod);
-        }
-        else{
-            dob = dob.replace("b.", "");
-            person = new Person(firstName, lastName, dob);
-        }
-
-        return person;
-    }
-}

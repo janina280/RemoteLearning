@@ -1,7 +1,7 @@
 package com.nagarro.remotelearning.util;
 
 public class PrimeNumberManager {
-    public static void identifyPrimeNumbers(int n) {
+    public static void identifyPrimeNumbers(int n) {//fara static=blocheaza orice suprascriere
         for (int i = 1; i <= n; i++) {
             if (isPrime(i)) {
                 System.out.println(i + "-PRIME");
@@ -11,7 +11,7 @@ public class PrimeNumberManager {
         }
     }
 
-    private static boolean isPrime(int num) {
+    private static boolean isPrime(int num) {//fara static
         if (num < 2) {
             return false;
         }
