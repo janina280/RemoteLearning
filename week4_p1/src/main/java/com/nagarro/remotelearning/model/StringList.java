@@ -1,17 +1,14 @@
-package com.nagarro.remotelearning;
+package com.nagarro.remotelearning.model;
 
-
-
+import com.nagarro.remotelearning.exception.CustomListException;
 import java.util.ArrayList;
-
-
+import java.util.List;
 
 public class StringList implements IList<String> {
-
     private int arraySize = 20;
     private Integer[] values = new Integer[arraySize];
     private int index = 0;
-    private final IList<String> recordOfOperations = new ArrayList<>();
+    private final List<String> recordOfOperations = new ArrayList<>();
 
     @Override
     public void add(String element) {
@@ -69,7 +66,7 @@ public class StringList implements IList<String> {
         return values.length;
     }
 
-    public IList<String> getRecords() {
+    public List<String> getRecords() {
         return recordOfOperations;
     }
 

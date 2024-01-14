@@ -1,4 +1,6 @@
-package com.nagarro.remotelearning;
+package com.nagarro.remotelearning.util;
+
+import com.nagarro.remotelearning.util.SentenceCreator;
 
 import java.util.List;
 import java.util.Random;

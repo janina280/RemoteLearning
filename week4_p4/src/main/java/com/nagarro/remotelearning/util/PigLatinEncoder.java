@@ -1,4 +1,4 @@
-package com.nagarro.remotelearning;
+package com.nagarro.remotelearning.util;
 
 public class PigLatinEncoder {
     private static final String PIG_LATIN_SUFFIX = "ay";

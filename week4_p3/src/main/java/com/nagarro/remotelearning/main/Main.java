@@ -1,4 +1,6 @@
-package com.nagarro.remotelearning;
+package com.nagarro.remotelearning.main;
+
+import com.nagarro.remotelearning.util.StoryCreator;
 
 public class Main {
     public static void main(String[] args) {

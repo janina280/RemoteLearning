@@ -1,4 +1,4 @@
-package com.nagarro.remotelearning;
+package com.nagarro.remotelearning.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,4 +41,3 @@ public class SentenceCreator {
         return list.get(random.nextInt(5));
     }
 }
-
