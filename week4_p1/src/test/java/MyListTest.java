@@ -1,18 +1,17 @@
-
-import static junit.framework.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
-
 import com.nagarro.remotelearning.exception.CustomListException;
+import com.nagarro.remotelearning.model.List;
 import com.nagarro.remotelearning.model.StringList;
-import com.nagarro.remotelearning.model.IList;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-public class MyIListTest {
+import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+
+public class MyListTest {
     
-    private IList<String> list;
+    private List<String> list;
     
     private Class<CustomListException> exceptionType = CustomListException.class;
     
@@ -45,13 +44,15 @@ public class MyIListTest {
     public void testAddNonIntegerValue() {
         exception.expect(exceptionType);
         exception.expectMessage("Invalid number.");
+
         list.add("Hey, I'm not an integer.");
     }
-    
+
     @Test
-    public void testAddNonNullValue() {
+    public void testAddNullValue() {
         exception.expect(exceptionType);
         exception.expectMessage("Null");
+
         list.add(null);
     }
     
@@ -60,6 +61,7 @@ public class MyIListTest {
         initData();
         exception.expect(exceptionType);
         exception.expectMessage("Index out of bounds.");
+
         list.get(initData.length);
     }
 }

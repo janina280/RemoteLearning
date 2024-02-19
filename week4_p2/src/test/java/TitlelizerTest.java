@@ -1,10 +1,9 @@
-import com.nagarro.remotelearning.model.StringTitlelizer;
-import org.junit.Before;
+import com.nagarro.remotelearning.model.Titlelizer;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-public class TitlelizerImplTest {
+public class TitlelizerTest {
 
-    private final StringTitlelizer titlelizer = new StringTitlelizer();
+    private final Titlelizer titlelizer = new Titlelizer();
 
     @Test(expected = IllegalArgumentException.class)
     public void testTitlelizeForNullShouldThrowException() throws Exception {
@@ -15,30 +14,30 @@ public class TitlelizerImplTest {
     public void testTitlelizeForEmptyStringShouldReturnEmptyString() {
 
         String actualResult = titlelizer.titlelize("");
-        assertEquals(actualResult, "");
+        assertEquals("", actualResult);
     }
     @Test
     public void testTitlelizeForTitlelizedString() throws Exception {
         String actualResult = titlelizer.titlelize("Already Titlelized String");
-        assertEquals(actualResult, "Already Titlelized String");
+        assertEquals("Already Titlelized String", actualResult);
     }
 
     @Test
     public void testTitlelizeShouldIgnorePrepositionsString() throws Exception {
-        String actualResult = titlelizer.titlelize("This String is Titlelized");
-        assertEquals(actualResult, "This String is Titlelized");
+        String actualResult = titlelizer.titlelize("the String Is Titlelized");
+        assertEquals("the String Is Titlelized", actualResult);
     }
 
     @Test
     public void testTitlelizeWhenFirsWordIsPreposition() throws Exception {
-        String actualResult = titlelizer.titlelize("this String is Titlelized");
-        assertEquals(actualResult, "This String is Titlelized");
+        String actualResult = titlelizer.titlelize("the String is Titlelized");
+        assertEquals("the String Is Titlelized", actualResult);
     }
 
     @Test
     public void testTitlelize() throws Exception {
         String actualResult = titlelizer.titlelize("please titlelize me");
-        assertEquals(actualResult, "Please Titlelize Me");
+        assertEquals("Please Titlelize Me", actualResult);
     }
 
 }

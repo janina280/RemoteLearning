@@ -2,13 +2,12 @@ package com.nagarro.remotelearning.model;
 
 import com.nagarro.remotelearning.exception.CustomListException;
 import java.util.ArrayList;
-import java.util.List;
 
-public class StringList implements IList<String> {
+public class StringList implements List<String> {
     private int arraySize = 20;
     private Integer[] values = new Integer[arraySize];
     private int index = 0;
-    private final List<String> recordOfOperations = new ArrayList<>();
+    private final java.util.List<String> recordOfOperations = new ArrayList<>();
 
     @Override
     public void add(String element) {
@@ -50,7 +49,7 @@ public class StringList implements IList<String> {
     }
 
     @Override
-    public boolean containsAll(IList<String> foreignList) {
+    public boolean containsAll(List<String> foreignList) {
         addRecord("containsAll()");
         for (Integer value : values) {
             if (!foreignList.contains(value.toString())) {
@@ -66,7 +65,7 @@ public class StringList implements IList<String> {
         return values.length;
     }
 
-    public List<String> getRecords() {
+    public java.util.List<String> getRecords() {
         return recordOfOperations;
     }
 
@@ -85,8 +84,8 @@ public class StringList implements IList<String> {
         }
     }
 
-    private void addRecord(String s) {
-        recordOfOperations.add("called " + s);
+    private void addRecord(String record) {
+        recordOfOperations.add("called " + record);
     }
 
 }

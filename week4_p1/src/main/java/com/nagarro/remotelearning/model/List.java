@@ -1,5 +1,5 @@
 package com.nagarro.remotelearning.model;
-public interface IList<T> {
+public interface List<T> {
 
 	void add(T element);
 	
@@ -7,7 +7,7 @@ public interface IList<T> {
 	
 	boolean contains(T element);
 	
-	boolean containsAll(IList<T> foreignIList);
+	boolean containsAll(List<T> foreignIList);
 	
 	int size();
 }
