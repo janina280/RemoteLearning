@@ -6,7 +6,7 @@ public class TitlelizerTest {
     private final Titlelizer titlelizer = new Titlelizer();
 
     @Test(expected = IllegalArgumentException.class)
-    public void testTitlelizeForNullShouldThrowException() throws Exception {
+    public void testTitlelizeForNullShouldThrowException(){
         titlelizer.titlelize(null);
     }
 
@@ -17,25 +17,25 @@ public class TitlelizerTest {
         assertEquals("", actualResult);
     }
     @Test
-    public void testTitlelizeForTitlelizedString() throws Exception {
+    public void testTitlelizeForTitlelizedString(){
         String actualResult = titlelizer.titlelize("Already Titlelized String");
         assertEquals("Already Titlelized String", actualResult);
     }
 
     @Test
-    public void testTitlelizeShouldIgnorePrepositionsString() throws Exception {
+    public void testTitlelizeShouldIgnorePrepositionsString(){
         String actualResult = titlelizer.titlelize("the String Is Titlelized");
         assertEquals("the String Is Titlelized", actualResult);
     }
 
     @Test
-    public void testTitlelizeWhenFirsWordIsPreposition() throws Exception {
+    public void testTitlelizeWhenFirsWordIsPreposition(){
         String actualResult = titlelizer.titlelize("the String is Titlelized");
         assertEquals("the String Is Titlelized", actualResult);
     }
 
     @Test
-    public void testTitlelize() throws Exception {
+    public void testTitlelize() {
         String actualResult = titlelizer.titlelize("please titlelize me");
         assertEquals("Please Titlelize Me", actualResult);
     }

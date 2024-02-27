@@ -2,6 +2,7 @@ package com.nagarro.remotelearning.model;
 
 import com.nagarro.remotelearning.exception.CustomListException;
 import java.util.ArrayList;
+import java.util.function.IntFunction;
 
 public class StringList implements List<String> {
     private int arraySize = 20;
@@ -17,15 +18,15 @@ public class StringList implements List<String> {
         }
         try {
             Integer.parseInt(element);
+            if (index == arraySize) {
+                resize();
+            }
+            values[index] = Integer.parseInt(element);
+            index++;
+            resize();
         } catch (NumberFormatException e) {
             throw new CustomListException("Invalid number.");
         }
-        if (index == arraySize) {
-            resize();
-        }
-        values[index] = Integer.parseInt(element);
-        index++;
-        resize();
     }
 
     @Override
@@ -41,7 +42,8 @@ public class StringList implements List<String> {
     public boolean contains(String element) {
         addRecord("contains()");
         for (Integer value : values) {
-            if (value == Integer.parseInt(element)) {
+            final int elementToSearchFor = Integer.parseInt(element);
+            if (value == elementToSearchFor) {
                 return true;
             }
         }
@@ -62,11 +64,11 @@ public class StringList implements List<String> {
     @Override
     public int size() {
         addRecord("size()");
-        return values.length;
+        return index;
     }
 
-    public java.util.List<String> getRecords() {
-        return recordOfOperations;
+    public String[] getRecords() {
+        return recordOfOperations.toArray(new String[recordOfOperations.size()]);
     }
 
     private void resize() {
@@ -75,11 +77,6 @@ public class StringList implements List<String> {
             arraySize *= 2;
             Integer[] newArray = new Integer[arraySize];
             System.arraycopy(values, 0, newArray, 0, values.length);
-            values = newArray;
-        } else {
-            Integer[] newArray = new Integer[index];
-            arraySize = index;
-            System.arraycopy(values, 0, newArray, 0, index);
             values = newArray;
         }
     }

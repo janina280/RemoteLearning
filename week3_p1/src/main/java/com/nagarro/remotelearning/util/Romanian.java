@@ -24,6 +24,6 @@ public class Romanian extends Person {
     @Override
     public void selfDescribe() {
         calculateAge();
-        System.out.println("Buna,sunt din Romania si imi place sa programez. Varsta mea este de " + age+" de ani");
+        System.out.println(surname+firstname+": Buna,sunt din Romania si imi place sa programez. Varsta mea este de " + age+" de ani");
     }
 }
