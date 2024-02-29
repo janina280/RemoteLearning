@@ -38,12 +38,12 @@ public class EngineTest {
 
     @Before
     public void setUp() {
-        employees.add(new Employee("Marian",false,true));
-        employees.add(new Employee("Andrei",false,false));
-        engineComponents.add(new EngineComponent("arbore",200));
-        engineComponents.add(new EngineComponent("injector",12));
+        employees.add(new Employee("Thom",false,true));
+        employees.add(new Employee("David",false,false));
         engineComponents.add(new EngineComponent("piston",20));
-        nonContainedEmployee = new Employee("Ionel",true,false);
+        engineComponents.add(new EngineComponent("injector",12));
+        engineComponents.add(new EngineComponent("arbore",200));
+        nonContainedEmployee = new Employee("Roberto",true,false);
         engineFactory = new EngineFactory(employees,engineComponents);
     }
 
