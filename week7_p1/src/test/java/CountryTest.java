@@ -1,6 +1,6 @@
-import com.nagarro.remotelearning.Country;
-import com.nagarro.remotelearning.CountryComparator;
-import com.nagarro.remotelearning.CountryGenerator;
+import com.nagarro.remotelearning.util.Country;
+import com.nagarro.remotelearning.util.CountryComparator;
+import com.nagarro.remotelearning.util.CountryGenerator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

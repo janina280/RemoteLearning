@@ -1,4 +1,6 @@
-package com.nagarro.remotelearning;
+package com.nagarro.remotelearning.util;
+import com.nagarro.remotelearning.util.Country;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
